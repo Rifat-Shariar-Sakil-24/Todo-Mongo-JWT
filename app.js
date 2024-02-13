@@ -2,7 +2,10 @@ require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const User = require('./models/users');
+
+const homeRoutes = require('./routes/homeRoutes');
+const loginRoutes = require('./routes/loginRoutes');
+const registerRoutes = require('./routes/registerRoutes');
 
 const app = express();
 app.use(express.static("public"));
@@ -19,10 +22,10 @@ async function connectDB() {
 connectDB();
 
 
+app.use(homeRoutes);
+app.use(loginRoutes);
+app.use(registerRoutes);
 
-app.get("/",function(req,res){
-   
-})
 
 app.listen(4000,function(){
     console.log("server is running on port 4000");
