@@ -8,7 +8,7 @@ const register_post = async function(req,res){
 
     try{
         const user = new User({
-            email: req.body.username,
+            email: req.body.email,
             password: req.body.password
         })
         await user.save();
