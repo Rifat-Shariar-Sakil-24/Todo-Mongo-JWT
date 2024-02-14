@@ -1,0 +1,19 @@
+const User = require("../models/User");
+const bcrypt = require('bcrypt');
+
+const loginCheck = async function (email,password){
+    const user = await User.findOne({ email:email }).exec();
+
+    if(user){
+         const auth = await bcrypt.compare(password,user.password);
+         if(auth){
+            return user;
+         }
+         throw Error("Incorrect password");
+    }
+     throw Error('No Such Email exists');
+}
+
+module.exports = {
+    loginCheck
+}

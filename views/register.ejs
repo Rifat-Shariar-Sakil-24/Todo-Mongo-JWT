@@ -42,7 +42,10 @@
                   location.assign('/submit')
                 }
                 else {
-                  console.log("user already exits");
+                  
+                  // console.log("user already exits");
+                  const errorMessage = await res.text(); 
+                  alert(errorMessage);
                 }
               }
               catch{
