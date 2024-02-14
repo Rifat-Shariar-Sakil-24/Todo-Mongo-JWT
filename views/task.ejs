@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+<div class="container-fluid">
+  <div class="row justify-content-end">
+    <div class="col-auto mt-3">
+      <a class="btn btn-light btn-lg" href="/logout" role="button">Log Out</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="jumbotron centered">
+    <i class="fas fa-key fa-6x"></i>
+    <h1 class="display-3">Todos</h1>
+    <p class="secret-text">Add your Todos now! :P</p>
+
+    <% for(let i=0;i<tasks.length;i++){ %>
+      <p class="secret-text"> <%= tasks[i].taskName %></p>
+   <% } %>
+    
+    <form action="/submit" method="POST">
+      <div class="form-group">
+        <input type="text" class="form-control text-center" name="secret" placeholder="What's your plan? :3">
+      </div>
+      <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+  </div>
+</div>
+<%- include('partials/footer') %>
+

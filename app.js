@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const homeRoutes = require('./routes/homeRoutes');
 const loginRoutes = require('./routes/loginRoutes');
 const registerRoutes = require('./routes/registerRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 const { isAuthenticated } = require('./middleware/authMiddleware');
 
 const app = express();
@@ -28,9 +29,11 @@ connectDB();
 app.use(homeRoutes);
 app.use(loginRoutes);
 app.use(registerRoutes);
+app.use(taskRoutes);
 
-app.get('/submit', isAuthenticated, function(req,res){
-  res.render('submit');
+app.get('/logout',function(req,res){
+  res.cookie('jwt','', {maxAge:1});
+  res.redirect('/');
 })
 
 app.listen(4000,function(){
