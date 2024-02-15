@@ -1,31 +1,13 @@
 const Task = require("../models/Task");
-const { getAllTasks, getUserName } = require("../middleware/userTasks");
-const secret = process.env.SECRET;
-const jwt = require('jsonwebtoken');
+const { getAllTasks, getUserName, getUserID } = require("../middleware/userTasks");
 
 
-const loggedInUserID = async function(req) {
-    const token =  req.cookies.jwt;
-    console.log(token);
-    try {
-        const decodedToken = jwt.verify(token, secret);
-        const tokenUserId = decodedToken.id;
-        console.log("token: "+tokenUserId);
-        return tokenUserId;
-    } catch (err) {
-       // console.log(err.message);
-        return [];
-    }
-};
+
 
 const task_get = async function(req, res) {
-    const IDofUser = await loggedInUserID(req);
-    console.log("dd:"+IDofUser);
     try {
-
-        
-        const tasks = await getAllTasks(IDofUser);
-        const userName = await getUserName(IDofUser);
+        const tasks = await getAllTasks(req);
+        const userName = await getUserName(req);
         //console.log(tasks);
         res.render('task', {tasks:tasks, showUser: userName});
     } catch (error) {
@@ -35,7 +17,7 @@ const task_get = async function(req, res) {
     }
 };
 const task_post = async function(req,res){
-     const userID = await loggedInUserID(req);
+     const userID = await getUserID(req);
      const taskName = req.body.taskName;
 
     
