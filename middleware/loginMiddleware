@@ -17,3 +17,4 @@ const loginCheck = async function (email,password){
 module.exports = {
     loginCheck
 }
+

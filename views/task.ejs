@@ -3,14 +3,12 @@
   <div class="row justify-content-end">
     <div class="col-auto mt-3">
       <div class="d-flex align-items-center">
-        <p class="welcome-text bg-grey align-middle mb-0">Welcome <%=showUser %></p>
+        <p class="welcome-text bg-grey align-middle mb-0">Welcome <%= showUser %></p>
         <a class="btn btn-light btn-lg ml-3 align-middle" href="/logout" role="button">Log Out</a>
       </div>
     </div>
   </div>
 </div>
-
-
 
 <div class="container">
   <div class="jumbotron centered">
@@ -18,9 +16,15 @@
     <h1 class="display-3">Todos</h1>
     <p class="secret-text">Add your Todos now! :P</p>
 
-    <% for(let i=0;i<tasks.length;i++){ %>
-      <p class="secret-text"> <%= tasks[i].taskName %></p>
-   <% } %>
+    <% for(let i=0; i<tasks.length; i++) { %>
+      <div class="task-container bg-grey mb-3 p-3 d-flex justify-content-between align-items-center">
+        <p class=" mb-0"><%= tasks[i].taskName %></p>
+        <div class="btn-group" role="group" aria-label="Task actions">
+          <button type="button" class="btn btn-secondary edit-button">Edit</button>
+          <button type="button" class="btn btn-danger delete-button" value="<%- tasks[i]._id %>">Delete</button>
+        </div>
+      </div>
+    <% } %>
     
     <form>
       <div class="form-group">
@@ -29,40 +33,21 @@
       <button class="btn btn-dark">Submit</button>
     </form>
 
-    <script>
-      const form = document.querySelector('form');
-            form.addEventListener('submit',async function(e){
-              e.preventDefault();
-              const taskName = form.taskName.value;
-
-              try{
-                 const res = await fetch('/task',{
-                  method: 'POST',
-                  body: JSON.stringify({taskName}),
-                  headers: { 'Content-Type': 'application/json'}
-                 });
-                 console.log(res);
-                   //const data = await res.json();
-                   //console.log(data);
-                  // console.log(data.errors);
-                if(res.status==201){
-                  console.log('task added');
-                  location.assign('/task')
-                }
-                else {
-                  
-                  // console.log("user already exits");
-                  const errorMessage = await res.text(); 
-                  alert(errorMessage);
-                }
-              }
-              catch{
-                  console.log("error occurred");
-              }
-             
-            })
-    </script>
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+      <div class="modal-content">
+        <p>Are you sure you want to delete this task?</p>
+        <div class="modal-buttons">
+          <button id="confirmDeleteButton" class="btn btn-danger">Yes</button>
+          <button id="cancelDeleteButton" class="btn btn-secondary">No</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<%- include('partials/footer') %>
 
+<script src="../script/task.js"></script>
+<audio id="successSound" src="../audio/delete2.mp3"></audio>
+<audio id="deleteSound" src="../audio/delete3.mp3"></audio>
+
+<%- include('partials/footer') %>

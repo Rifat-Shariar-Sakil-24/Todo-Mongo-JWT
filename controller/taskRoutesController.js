@@ -34,7 +34,24 @@ const task_post = async function(req,res){
     }
 }
 
+const task_delete = function(req,res){
+    const taskToDeleteID = req.body.taskToDelete;
+    try{
+        Del();
+        async function Del(){
+            await Task.findByIdAndDelete(taskToDeleteID).exec()
+        }
+        res.status(201).send("deleted");
+    }
+    catch (error){
+         res.status(401).send(error.message);
+    }
+   
+    
+}
+
 module.exports = {
     task_get,
     task_post,
+    task_delete
 }
