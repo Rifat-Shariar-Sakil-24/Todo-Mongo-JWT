@@ -2,10 +2,15 @@
 <div class="container-fluid">
   <div class="row justify-content-end">
     <div class="col-auto mt-3">
-      <a class="btn btn-light btn-lg" href="/logout" role="button">Log Out</a>
+      <div class="d-flex align-items-center">
+        <p class="welcome-text bg-grey align-middle mb-0">Welcome <%=showUser %></p>
+        <a class="btn btn-light btn-lg ml-3 align-middle" href="/logout" role="button">Log Out</a>
+      </div>
     </div>
   </div>
 </div>
+
+
 
 <div class="container">
   <div class="jumbotron centered">
@@ -17,12 +22,46 @@
       <p class="secret-text"> <%= tasks[i].taskName %></p>
    <% } %>
     
-    <form action="/submit" method="POST">
+    <form>
       <div class="form-group">
-        <input type="text" class="form-control text-center" name="secret" placeholder="What's your plan? :3">
+        <input type="text" class="form-control text-center" name="taskName" placeholder="What's your plan? :3">
       </div>
-      <button type="submit" class="btn btn-dark">Submit</button>
+      <button class="btn btn-dark">Submit</button>
     </form>
+
+    <script>
+      const form = document.querySelector('form');
+            form.addEventListener('submit',async function(e){
+              e.preventDefault();
+              const taskName = form.taskName.value;
+
+              try{
+                 const res = await fetch('/task',{
+                  method: 'POST',
+                  body: JSON.stringify({taskName}),
+                  headers: { 'Content-Type': 'application/json'}
+                 });
+                 console.log(res);
+                   //const data = await res.json();
+                   //console.log(data);
+                  // console.log(data.errors);
+                if(res.status==201){
+                  console.log('task added');
+                  location.assign('/task')
+                }
+                else {
+                  
+                  // console.log("user already exits");
+                  const errorMessage = await res.text(); 
+                  alert(errorMessage);
+                }
+              }
+              catch{
+                  console.log("error occurred");
+              }
+             
+            })
+    </script>
   </div>
 </div>
 <%- include('partials/footer') %>

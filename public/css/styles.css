@@ -14,4 +14,16 @@ body {
     color: #fff;
     background-color: #000;
   }
+  .bg-grey {
+    background-color: #ccc; /* or any other shade of grey */
+  }
+  .welcome-text {
+    font-size: 1.25rem; /* Example font size */
+    padding: 10px 15px; /* Adjust padding to ensure proper size */
+    margin: 0; /* Example margin */
+    border-radius: 5px; /* Example border radius */
+    color: #333; /* Example text color */
+    background-color: #ccc; /* Example background color */
+  }
+  
   
