@@ -20,7 +20,7 @@
       <div class="task-container bg-grey mb-3 p-3 d-flex justify-content-between align-items-center">
         <p class=" mb-0"><%= tasks[i].taskName %></p>
         <div class="btn-group" role="group" aria-label="Task actions">
-          <button type="button" class="btn btn-secondary edit-button">Edit</button>
+          <button type="button" class="btn btn-secondary edit-button" value="<%- tasks[i]._id %> <%- tasks[i].taskName %>">Edit</button>
           <button type="button" class="btn btn-danger delete-button" value="<%- tasks[i]._id %>">Delete</button>
         </div>
       </div>
@@ -43,10 +43,26 @@
         </div>
       </div>
     </div>
+
+    <div id="confirmationEditModal" class="modalEdit">
+      <div class="modal-content">
+        <p>Edit Your Task</p>
+        <textarea id="taskTextarea" rows="2" cols="80"></textarea>
+        <div class="modal-buttons">
+          <button id="confirmEditButton" class="btn btn-danger">Update</button>
+          <button id="cancelEditButton" class="btn btn-secondary">Cancel</button>
+        </div>
+      </div>
+    </div>
+    
+
+
+
   </div>
 </div>
 
 <script src="../script/task.js"></script>
+<script src="../script/gg.js"></script>
 <audio id="successSound" src="../audio/delete2.mp3"></audio>
 <audio id="deleteSound" src="../audio/delete3.mp3"></audio>
 

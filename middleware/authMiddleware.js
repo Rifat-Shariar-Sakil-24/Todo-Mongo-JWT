@@ -12,7 +12,7 @@ const isAuthenticated = function(req,res,next){
                 res.redirect('/');
             }
             else{
-                console.log(decodedToken.id);
+               // console.log(decodedToken.id);
                 next();
             }
         })

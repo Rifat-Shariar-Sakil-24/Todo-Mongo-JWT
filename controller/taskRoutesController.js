@@ -8,7 +8,7 @@ const task_get = async function(req, res) {
     try {
         const tasks = await getAllTasks(req);
         const userName = await getUserName(req);
-        //console.log(tasks);
+        console.log(tasks);
         res.render('task', {tasks:tasks, showUser: userName});
     } catch (error) {
         // Handle error appropriately
@@ -50,8 +50,36 @@ const task_delete = function(req,res){
     
 }
 
+const task_put = function(req,res){
+  //console.log(req.body);
+  const gotTask = req.body.taskToEdit;
+  const gotTaskId = req.body.taskID;
+  console.log(gotTaskId);
+
+  try{
+    Edit();
+    async function Edit(){
+        const doc = await Task.findById(gotTaskId);
+        console.log("task: " + doc.taskName);
+        doc.taskName = gotTask;
+        console.log("task: " + doc.taskName);
+        await doc.save();
+        res.status(201).send("Edited");
+    }
+    
+    
+  }
+  catch{
+    console.log('error found');
+    res.status(401).send(error.message);
+  }
+
+  
+}
+
 module.exports = {
     task_get,
     task_post,
-    task_delete
+    task_delete,
+    task_put
 }

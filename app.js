@@ -31,10 +31,12 @@ app.use(loginRoutes);
 app.use(registerRoutes);
 app.use(taskRoutes);
 
+
 app.get('/logout',function(req,res){
   res.cookie('jwt','', {maxAge:1});
   res.redirect('/');
 })
+
 
 app.listen(process.env.PORT || 4000,function(){
     console.log("server is running on port 4000");
