@@ -1,6 +1,7 @@
 
 body {
     background-color: #E8ECEF;
+    background-color: #3ea66b;
   }
   
   .centered {
@@ -70,4 +71,9 @@ body {
 
   .modal-buttons {
     margin-top: 20px;
+  }
+
+body {
+    background-color: #E8ECEF;
+    background-color: #3ea66b;
   }
