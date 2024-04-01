@@ -9,7 +9,6 @@ const loginRoutes = require('./routes/loginRoutes');
 const registerRoutes = require('./routes/registerRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const { isAuthenticated } = require('./middleware/authMiddleware');
-const User = require('./models/User');
 
 const app = express();
 app.use(express.static("public"));
@@ -19,7 +18,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser());
 
 const url = 'mongodb+srv://'+process.env.DBNAME+':'+process.env.DBPASS+'@cluster0.qrtll88.mongodb.net/ToDoList'
-const PORT = 8000;
+
 
 connectDB().then(() => {
     console.log("Connected to DB");
@@ -35,24 +34,20 @@ async function connectDB() {
     
 }
 
-app.get("/",async function(req,res){
-    await User.deleteMany({});
-   
- res.send("why error showing");
-});
-//app.use(homeRoutes);
-// app.use(loginRoutes);
-// app.use(registerRoutes);
-// app.use(taskRoutes);
+
+app.use(homeRoutes);
+app.use(loginRoutes);
+app.use(registerRoutes);
+app.use(taskRoutes);
 
 
-// app.get('/logout',function(req,res){
-//   res.cookie('jwt','', {maxAge:1});
-//   res.redirect('/');
-// })
+app.get('/logout',function(req,res){
+  res.cookie('jwt','', {maxAge:1});
+  res.redirect('/');
+})
 
 
-app.listen(PORT,function(){
+app.listen(process.env.PORT || 4000,function(){
     console.log("server is running on port 4000");
 })
 
