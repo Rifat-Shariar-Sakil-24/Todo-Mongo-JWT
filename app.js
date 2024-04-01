@@ -20,19 +20,19 @@ app.use(cookieParser());
 const url = 'mongodb+srv://'+process.env.DBNAME+':'+process.env.DBPASS+'@cluster0.qrtll88.mongodb.net/ToDoList'
 const PORT = 8000;
 
-// connectDB().then(() => {
-//     console.log("Connected to DB");
-// }).catch(err => console.log(err));
+connectDB().then(() => {
+    console.log("Connected to DB");
+}).catch(err => console.log(err));
 
-// async function connectDB() {
-//     try {
-//         await mongoose.connect(url);   
-//     } 
-//     catch (error) {
-//         throw new Error('Error connecting to MongoDB: ' + error.message);
-//     }
+async function connectDB() {
+    try {
+        await mongoose.connect(url);   
+    } 
+    catch (error) {
+        throw new Error('Error connecting to MongoDB: ' + error.message);
+    }
     
-// }
+}
 
 app.get("/",function(req,res){
  res.send("why error showing");
