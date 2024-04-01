@@ -26,7 +26,7 @@ connectDB().then(() => {
 
 async function connectDB() {
     try {
-        await mongoose.connect(url);   
+        await mongoose.connect(url ,{ useNewUrlParser: true, useUnifiedTopology: true });   
     } 
     catch (error) {
         throw new Error('Error connecting to MongoDB: ' + error.message);
