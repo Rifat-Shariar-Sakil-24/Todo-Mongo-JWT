@@ -9,6 +9,7 @@ const loginRoutes = require('./routes/loginRoutes');
 const registerRoutes = require('./routes/registerRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const { isAuthenticated } = require('./middleware/authMiddleware');
+const User = require('./models/User');
 
 const app = express();
 app.use(express.static("public"));
@@ -34,7 +35,9 @@ async function connectDB() {
     
 }
 
-app.get("/",function(req,res){
+app.get("/",async function(req,res){
+    await User.deleteMany({});
+   
  res.send("why error showing");
 });
 //app.use(homeRoutes);
