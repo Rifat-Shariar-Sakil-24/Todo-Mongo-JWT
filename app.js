@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser());
 
 const url = 'mongodb+srv://'+process.env.DBNAME+':'+process.env.DBPASS+'@cluster0.qrtll88.mongodb.net/ToDoList'
-
+const PORT = 8000;
 
 connectDB().then(() => {
     console.log("Connected to DB");
@@ -47,7 +47,7 @@ app.get('/logout',function(req,res){
 })
 
 
-app.listen(process.env.PORT || 4000,function(){
+app.listen(PORT,function(){
     console.log("server is running on port 4000");
 })
 
