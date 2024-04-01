@@ -34,8 +34,10 @@ const PORT = 8000;
     
 // }
 
-
-app.use(homeRoutes);
+app.get("/",function(req,res){
+ res.send("why error showing");
+});
+//app.use(homeRoutes);
 // app.use(loginRoutes);
 // app.use(registerRoutes);
 // app.use(taskRoutes);
