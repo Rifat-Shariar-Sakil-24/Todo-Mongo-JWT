@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
-const homeRoutes = require('./routes/homeRoutes');
-const loginRoutes = require('./routes/loginRoutes');
-const registerRoutes = require('./routes/registerRoutes');
-const taskRoutes = require('./routes/taskRoutes');
-const { isAuthenticated } = require('./middleware/authMiddleware');
+const homeRoutes = require('../routes/homeRoutes');
+const loginRoutes = require('../routes/loginRoutes');
+const registerRoutes = require('../routes/registerRoutes');
+const taskRoutes = require('../routes/taskRoutes');
+const { isAuthenticated } = require('../middleware/authMiddleware');
 
 const app = express();
 app.use(express.static("public"));
