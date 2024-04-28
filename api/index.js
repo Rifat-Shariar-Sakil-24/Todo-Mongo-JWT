@@ -12,7 +12,11 @@ const { isAuthenticated } = require('../middleware/authMiddleware');
 
 const app = express();
 app.use(express.static("public"));
+
 app.set('view engine', 'ejs');
+const parentDir = path.dirname(__dirname);
+app.set('views', path.join(parentDir, 'views'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser());
