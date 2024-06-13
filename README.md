@@ -27,10 +27,15 @@ A simple To-Do application with JWT authentication, built using Node.js, Express
    ```
 
 3. Set up environment variables:
+   ```bash 
    Create a .env file in the root directory and add the following:
-   MONGO_URI=<your_mongodb_connection_string>
-   JWT_SECRET=<your_jwt_secret>
-   PORT=3000
+   DBNAME=<your_mongodb_connection_string>
+   DBPASS=<your_jwt_secret>
+   SECRET=3000
+   ```
+   DBNAME is the name of the MongoDB cluster, DBPASS is the cluster password, SECRET is your secret encryption key
 
 4. Start the server:
+   ```bash
    npm start
+   ```
