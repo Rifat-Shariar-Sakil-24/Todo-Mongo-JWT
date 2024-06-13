@@ -35,11 +35,11 @@ https://todo-mongo-jwt.vercel.app/
 3. Set up environment variables:
    ```bash 
    Create a .env file in the root directory and add the following:
-   DBNAME=<your_mongodb_connection_string>
-   DBPASS=<your_jwt_secret>
-   SECRET=3000
+   DBNAME=<your_mongoDB_cluster_name>
+   DBPASS=<cluster_password>
+   SECRET=<secret_key_for_password_encryption>
    ```
-   DBNAME is the name of the MongoDB cluster, DBPASS is the cluster password, SECRET is your secret encryption key
+  
 
 4. Start the server:
    ```bash
