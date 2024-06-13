@@ -11,7 +11,8 @@ A simple To-Do application with JWT authentication, built using Node.js, Express
 
 ### Client Mode: 
 ```bash 
-https://todo-mongo-jwt.vercel.app/
+[Project Live Link](https://todo-mongo-jwt.vercel.app/).
+
 ``` 
 
 ### Developer mode
