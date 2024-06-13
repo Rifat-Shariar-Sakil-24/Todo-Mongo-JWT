@@ -8,13 +8,19 @@ A simple To-Do application with JWT authentication, built using Node.js, Express
 - CRUD operations for To-Do items
 - Responsive UI using EJS
 
-## Getting Started
 
-### Prerequisites
+### Client Mode: 
+```bash 
+https://todo-mongo-jwt.vercel.app/
+``` 
+
+### Developer mode
+
+## Prerequisites
 - Node.js
 - MongoDB
 
-### Installation
+## Installation
 
 1. Clone the repository:
    ```bash
