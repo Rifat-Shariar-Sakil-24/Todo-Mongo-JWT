@@ -9,8 +9,6 @@ A simple To-Do application with JWT authentication, built using Node.js, Express
 - Responsive UI using EJS
 
 
-### Client Mode:  
-[Project Live Link](https://todo-mongo-jwt.vercel.app/)
 
 
 
